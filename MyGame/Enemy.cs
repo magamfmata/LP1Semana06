@@ -73,16 +73,5 @@ namespace MyGame
 
             powerUpCount++;
         }
-
-        private static int powerUpCount;
-        static Enemy()
-        {
-            powerUpCount = 0;
-        }
-
-        public static int GetPowerUpCount()
-        {
-            return powerUpCount;
-        }
     }
 }
