@@ -2,88 +2,87 @@ using System;
 
 namespace MyGame
 {
-    public enum PowerUp
+public class Enemy
+{
+    private string name;
+    private float health;
+    private float shield;
+
+    public Enemy (string name)
     {
-        Health,
-        Shield
+        SetName(name);
+        health = 100;
+        shield = 0;
     }
 
-    public class Enemy
+    public string GetName()
     {
-        private string name;
-        private float health;
-        private float shield;
-        private int powerUpCount;
-        public Enemy(string name)
+        return name;
+    }
+
+    public void TakeDamage(float damage)
+    {
+        shield -= damage;
+        if (shield <= 0)
         {
-            SetName(name);
-            health = 100;
+            float damageStillToInflict = -shield;
             shield = 0;
-            powerUpCount = 0;
-        }
-
-        public string GetName()
-        {
-            return name;
-        }
-
-        public void TakeDamage(float damage)
-        {
-            shield -= damage;
-            if (shield <= 0)
-            {
-                float damageStillToInflict = -shield;
-                shield = 0;
-                health -= damageStillToInflict;
-                if (health < 0) health = 0;
-            }
-        }
-
-        public float GetHealth()
-        {
-            return health;
-        }
-
-        public float GetShield()
-        {
-            return shield;
-        }
-
-        public void SetName(string newName)
-        {
-            string ShortenedName = "";
-            for (int i = 0; i < newName.Length && i < 8; i++)
-            {
-                ShortenedName += newName[i];
-            }
-            name = ShortenedName;
-        }
-
-        public void PickupPowerUp(PowerUp powerUp, float value)
-        {
-            if (powerUp == PowerUp.Health)
-            {
-                health += value;
-                if (health > 100)
-                {
-                    health = 100;
-                }
-            }
-            else if (powerUp == PowerUp.Shield)
-            {
-                shield += value;
-                if (shield > 100)
-                {
-                    shield = 100;
-                }
-            }
-
-            powerUpCount++; 
-        }
-
-        public int GetPowerUpCount()
-        {
-            return powerUpCount;
+            health -= damageStillToInflict;
+            if (health < 0) health = 0;
         }
     }
+
+    public float GetHealth()
+    {
+        return health;
+    }
+
+    public float GetShield()
+    {
+        return shield;
+    }
+
+    public void SetName(string newName)
+    {
+        string ShortenedName = "";
+        for (int i = 0; i < newName.Length && i < 8; i++)
+        {
+            ShortenedName += newName[i];
+        }
+        name = ShortenedName;
+    }
+
+    public void PickupPowerUp(PowerUp powerUp, float value)
+    {
+        if (powerUp == PowerUp.Health)
+        {
+            health += value;
+            if (health > 100)
+            {
+                health = 100;
+            }
+        }
+        else if (powerUp == PowerUp.Shield)
+        {
+            shield += value;
+            if (shield > 100)
+           {
+            shield = 100;
+           }
+        }
+
+        powerUpCount++;
+    }
+
+    private static int powerUpCount;
+    static Enemy()
+    {
+        powerUpCount = 0;
+    }
+
+    public static int GetPowerUpCount()
+    {
+        return powerUpCount;
+    }
+}
 }

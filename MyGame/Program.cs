@@ -21,6 +21,7 @@ namespace MyGame
            {
                Console.WriteLine($"{enemy.GetName()} {enemy.GetHealth()}");
                Console.Write($"{enemy.GetShield()}");
+           
            }
         }
     }
