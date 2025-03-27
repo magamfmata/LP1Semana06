@@ -2,17 +2,24 @@ using System;
 
 namespace MyGame
 {
+    public enum PowerUp
+    {
+        Health,
+        Shield
+    }
+
     public class Enemy
     {
         private string name;
         private float health;
         private float shield;
-
-        public Enemy (string name)
+        private int powerUpCount;
+        public Enemy(string name)
         {
             SetName(name);
             health = 100;
             shield = 0;
+            powerUpCount = 0;
         }
 
         public string GetName()
@@ -44,7 +51,7 @@ namespace MyGame
 
         public void SetName(string newName)
         {
-           string ShortenedName = "";
+            string ShortenedName = "";
             for (int i = 0; i < newName.Length && i < 8; i++)
             {
                 ShortenedName += newName[i];
@@ -71,7 +78,12 @@ namespace MyGame
                 }
             }
 
-            powerUpCount++;
+            powerUpCount++; 
+        }
+
+        public int GetPowerUpCount()
+        {
+            return powerUpCount;
         }
     }
 }
