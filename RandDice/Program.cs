@@ -14,7 +14,7 @@ namespace RandDice
 
          Random random = new Random(seed);
             for (int i = 0; i < numbers; i++);
-            total += random.Next(1, 7);
+            total += random.Next(1, 6);
             Console.WriteLine(total);
 
         }
