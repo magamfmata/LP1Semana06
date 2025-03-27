@@ -6,7 +6,8 @@ namespace RandDice
     {
         private static void Main(string[] args)
         {
-            Console.WriteLine("Hello LP1!");
+         int numbers = int.Parse(args[0]);
+         int seed = int.Parse(args[1]);
         }
     }
 }
