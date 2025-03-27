@@ -17,7 +17,21 @@ namespace MyGame
         shield = 0;
 
         }
+        public string TakeDamage(float damage)
 
+        {
+            shield -= damage;
+            if (shield <= 0)
+            {
+                float damageLeft = -shield;
+                shield = 0;
+                health -= damageLeft;
+                if (health < 0) health = 0;
+            }
+
+            return health + " " + shield;
+
+        }
         public string GetName()
         {
             return name;
