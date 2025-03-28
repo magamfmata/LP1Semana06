@@ -1,4 +1,5 @@
 ﻿using System;
+using MyRoguelike;
 
 namespace MyRoguelike
 {
@@ -45,15 +46,37 @@ namespace MyRoguelike
     public Level(int roomNumber, Toughness levelToughness)
     {
         this.toughness = levelToughness;
-        this.enemiesInRooms = new Enemy[roomNumber];
+        enemiesInRooms = new Enemy[roomNumber];
     }
     public void SetEnemyInRoom(int roomIndex, Enemy enemy)
+    {
+        enemiesInRooms[roomIndex] = enemy;
+    }
+    public void SetEnemyInRoom  (int roomIndex, Enemy enemy)
     {
         enemiesInRooms[roomIndex] = enemy;
     }
     public Toughness GetToughness()
     {
         return toughness;
+    }
+    public int GetNumRooms()
+    {
+        return enemiesInRooms.Length;
+    }
+    public int GetNumEnemies()
+    {
+        int count = 0;
+        foreach (var enemy in enemiesInRooms)
+        {
+            if (enemy != null) count++;
+        }
+        return count;
+    }   
+    
+
+    {
+
     }
    }
 
