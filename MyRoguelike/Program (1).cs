@@ -37,3 +37,24 @@ namespace MyRoguelike
         }
     }
 }
+   public class Level
+   {
+    private Toughness toughness;
+    private Enemy[] enemiesInRooms;
+
+    public Level(int roomNumber, Toughness levelToughness)
+    {
+        this.toughness = levelToughness;
+        this.enemiesInRooms = new Enemy[roomNumber];
+    }
+    public void SetEnemyInRoom(int roomIndex, Enemy enemy)
+    {
+        enemiesInRooms[roomIndex] = enemy;
+    }
+    public Toughness GetToughness()
+    {
+        return toughness;
+    }
+   }
+
+
