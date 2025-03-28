@@ -1,5 +1,8 @@
 ﻿using System;
 using MyRoguelike;
+using Level = MyRoguelike.Level;
+using System.Globalization;
+using Humanizer;
 
 namespace MyRoguelike
 {
@@ -73,7 +76,17 @@ namespace MyRoguelike
         }
         return count;
     }   
-    
+    public void PrintEnemies()
+    {
+        for (int i = 0; i < enemiesInRooms.Length; i++)
+        {
+            if (enemiesInRooms[i] != null)
+            {
+                Console.WriteLine($"{GetRoomName(i)}: {enemiesInRooms[i].GetName()}");
+            }
+        }
+    }
+
 
     {
 
